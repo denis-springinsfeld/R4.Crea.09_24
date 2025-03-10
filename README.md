@@ -1,5 +1,4 @@
 # R4.Crea.09_24
-
 # Astro JS
 
 **Astro** est un framework JavaScript moderne conçu pour créer des sites web statiques et dynamiques ultra-rapides.
@@ -98,7 +97,7 @@ Différents types de fichiers de routage Astro :
 
 Structure de la page `.astro` :
 
-```html
+```jsx
 ---
 // Component Script (JavaScript) - FrontMatter
 ---
@@ -112,7 +111,7 @@ Les clôtures `---` `Code Fences` - **FrontMatter** - sont la partie script de v
 
 Modifier le fichier `src/pages/index.astro` pour afficher un message de bienvenue.
 
-```html
+```jsx
 ---
 ---
 
@@ -135,7 +134,7 @@ Modifier le fichier `src/pages/index.astro` pour afficher un message de bienvenu
 
 - Créez un nouveau fichier `about` dans `src/pages/` avec l'extension `.astro`, `.md` ou `.html`.
 
-```html
+```jsx
 ---
 ---
 
@@ -158,7 +157,7 @@ Modifier le fichier `src/pages/index.astro` pour afficher un message de bienvenu
 
 - Pour pouvoir naviguer facilement entre les pages, il faut ajoutez une navigation aux différents fichiers `index.astro` et `about.astro`
 
-```html
+```jsx
 ...
 <nav>
   <ul>
@@ -251,7 +250,7 @@ Astro **Layouts** est un composant permettant de créer des **modèles globaux**
 
 - Créez un nouveau fichier `BaseLayout.astro` dans `src/layouts/` avec une **majuscule** et l'extension `.astro`.
 
-```html
+```jsx
 ---
 const title = 'Astro BaseLayouts';
 ---
@@ -378,7 +377,7 @@ npx astro add tailwind
 - 3/ Importez ce fichier dans les pages où vous souhaitez appliquer Tailwind. Cette opération est souvent effectuée dans un composant de mise en page afin que les styles Tailwind puissent être utilisés sur toutes les pages partageant cette mise en page :
   `src/layouts/Layout.astro`
 
-```html
+```jsx
 ---
 import "../styles/global.css";
 ---
@@ -392,3 +391,180 @@ Ref :
 [Prettier](https://astro-tips.dev/tips/prettier/)
 
 ---
+
+## C - Astro Advanced
+
+### C_1 Astro Data
+
+Astro Data est un moyen de charger des données externes dans vos composants Astro.
+
+Astro Data prend en charge les sources de données suivantes :
+
+- JSON
+- Markdown
+- YAML
+- CSV
+- XML
+- RSS
+- Atom
+- iCal
+
+#### \_Charger des données JSON
+
+- Créez un nouveau fichier `data.json` dans `src/dat` avec des données JSON.
+
+```json
+{
+  "title": "Astro Data",
+  "description": "Astro Data is a way to load external data into your Astro components."
+}
+```
+
+- Importez les données JSON dans votre composant Astro.
+
+```astro
+---
+import data from '../data/data.json';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{data.title}</title>
+  </head>
+  <body>
+    <Header />
+    <h1>{data.title}</h1>
+    <p>{data.description}</p>
+  </body>
+</html>
+```
+
+#### \_Charger des données JSON et les mapper
+
+- Créez un nouveau fichier `data.json` dans `src/data` avec des données JSON.
+
+```json
+[
+  {
+    "name": "HTML",
+    "level": "Advanced"
+  },
+  {
+    "name": "CSS",
+    "level": "Intermediate"
+  },
+  {
+    "name": "JavaScript",
+    "level": "Advanced"
+  }
+]
+```
+
+- Importez les données JSON dans votre composant Astro et mappez-les pour afficher les compétences.
+
+```astro
+---
+import compet from '../data/compet.json';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Compétences</title>
+  </head>
+  <body>
+    <Header />
+    <h1>Compétences</h1>
+    <ul>
+      {compet.map((item) => (
+        <li>{item.name}: {item.level}</li>
+      ))}
+    </ul>
+  </body>
+</html>
+```
+
+### Fetch Data from JSONPlaceholder
+
+JSONPlaceholder is a free online REST API that you can use to test and prototype your applications. Here’s how you can fetch data from JSONPlaceholder in an Astro component.
+
+1. Create a new Astro component file, for example, `FetchData.astro`.
+
+```astro
+---
+import { onMount } from 'astro/client';
+
+let posts = [];
+
+onMount(async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  posts = await response.json();
+});
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Fetch Data</title>
+  </head>
+  <body>
+    <Header />
+    <h1>Posts</h1>
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>
+```
+
+This component fetches posts from JSONPlaceholder and displays them in a list.
+
+### astro aframe
+
+After some more research I found the solution to the problem on the a-frame git. Inside of the script tag there has to be an is:inline for some reason.
+
+```astro
+<head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js" is:inline></script>
+</head>
+<body>
+    <a-scene xr-mode-ui="enabled: false">
+                <a-sky id="backgroundRotation" src="public/space2.png" rotation ="0 0 0" transparent="enabled:true"></a-sky>
+                <a-entity camera look-controls="enabled: false" wasd-controls="enabled: false"></a-entity>
+        </a-scene>
+</body>
+```
+
+`is:inline` can be used so Astro doesn't try to modify/optimize that script, you can read more here. docs.astro.build/en/guides/client-side-scripts/… –
+
+[doc](https://docs.astro.build/en/guides/client-side-scripts/#load-external-scripts)
+
+To use GSAP in an Astro page/component you can do this:
+
+1. Install gsap package in project root:
+
+npm i gsap 2) Add a script tag to your Astro component, then include and use GSAP:
+
+```astro
+<script>
+  import { gsap } from "gsap";
+  console.log("using GSAP: ", gsap.version);
+</script>
+
+```
+
+[tips/prettier/](https://astro-tips.dev/tips/prettier/)
+
+```
+
+```
+
