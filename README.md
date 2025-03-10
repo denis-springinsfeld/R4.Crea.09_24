@@ -21,7 +21,7 @@ Modification des settings de VSCode
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
-``
+```
 ## A\_ Créez et déployez votre premier site Astro
 
 ### A_1 Installation et Configuration
