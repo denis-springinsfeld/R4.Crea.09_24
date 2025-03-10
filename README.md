@@ -4,9 +4,9 @@
 **Astro** est un framework JavaScript moderne conçu pour créer des sites web statiques et dynamiques ultra-rapides.
 générateur de sites statiques (SSG).
 
-Installer l'extension **Astro** pour **VSCode** pour bénéficier de la coloration syntaxique et des suggestions de code.
+- Installer l'extension **Astro** pour **VSCode** pour bénéficier de la coloration syntaxique et des suggestions de code.
 
-Modification des settings de VSCode
+- Modification des settings de VSCode
 
 ```json
 {
@@ -22,6 +22,29 @@ Modification des settings de VSCode
   }
 }
 ```
+
+- Prettier :
+
+```bash
+  npm install --save-dev prettier prettier-plugin-astro
+```
+
+Ajouter un fichier`.prettierrc`:
+```json
+{
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro",
+      }
+    }
+  ]
+}
+```
+
+
 ## A\_ Créez et déployez votre premier site Astro
 
 ### A_1 Installation et Configuration
@@ -398,6 +421,31 @@ npx astro add tailwind
 import "../styles/global.css";
 ---
 ```
+
+- Prettier pour TailwindCSS:
+
+```
+  npm install --save-dev prettier-plugin-tailwindcss
+```
+
+Modifier le fichier `.prettierrc`
+```bash
+{
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro",
+      }
+    }
+  ]
+}
+```
+
+
+
+
 
 Ref :
 [Style doc Astro](https://docs.astro.build/en/guides/styling/)
