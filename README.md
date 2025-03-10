@@ -447,7 +447,7 @@ Modifier le fichier `.prettierrc`
 
 
 
-Ref :
+### Ref :
 [Style doc Astro](https://docs.astro.build/en/guides/styling/)
 
 [link tailwindCSS](https://tailwindcss.com/docs/installation/framework-guides/astro)
