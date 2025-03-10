@@ -429,7 +429,7 @@ import "../styles/global.css";
 ```
 
 Modifier le fichier `.prettierrc`
-```bash
+```json
 {
   "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   "overrides": [
