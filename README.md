@@ -6,6 +6,22 @@ générateur de sites statiques (SSG).
 
 Installer l'extension **Astro** pour **VSCode** pour bénéficier de la coloration syntaxique et des suggestions de code.
 
+Modification des settings de VSCode
+
+```json
+{
+  "emmet.includeLanguages": {
+    "astro": "html"
+  },
+ "tailwindCSS.includeLanguages": {
+    "astro": "astro"
+  },
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+``
 ## A\_ Créez et déployez votre premier site Astro
 
 ### A_1 Installation et Configuration
