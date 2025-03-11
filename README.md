@@ -23,26 +23,6 @@ générateur de sites statiques (SSG).
 }
 ```
 
-- Prettier :
-
-```bash
-  npm install --save-dev prettier prettier-plugin-astro
-```
-
-Ajouter un fichier`.prettierrc`:
-```json
-{
-  "plugins": ["prettier-plugin-astro"],
-  "overrides": [
-    {
-      "files": "*.astro",
-      "options": {
-        "parser": "astro",
-      }
-    }
-  ]
-}
-```
 
 
 ## A\_ Créez et déployez votre premier site Astro
@@ -73,6 +53,27 @@ Remarque : il est possible de créer un projet Astro avec un modèle spécifique
 ```bash
   # create a new project with npm & template
   npm create astro@latest -- --template minimal
+```
+
+- Prettier :
+
+```bash
+  npm install --save-dev prettier prettier-plugin-astro
+```
+
+Ajouter un fichier`.prettierrc`:
+```json
+{
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
+}
 ```
 
 #### \_Démarrer le serveur de développement
