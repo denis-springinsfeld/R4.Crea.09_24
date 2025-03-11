@@ -437,7 +437,7 @@ Modifier le fichier `.prettierrc`
     {
       "files": "*.astro",
       "options": {
-        "parser": "astro",
+        "parser": "astro"
       }
     }
   ]
