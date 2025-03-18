@@ -86,7 +86,7 @@ Modifier le fichier `.prettierrc`
 
 ## 5 - Ajouter des data
 
-- Ajouter un dossier `data` dans le dossier `content`et y ajouter le fichier `data.json`.
+- Dans le répertoire `content` créer un dossier `data` et y ajouter le fichier `pizzas.json`.
 
 - Ajouter une page `pizza.astro` dans le dossier `src/pages`:
 
@@ -94,14 +94,14 @@ Modifier le fichier `.prettierrc`
 ---
 ---
 import BasicLayout from "../layouts/BasicLayout.astro";
-import data from "../content/data/data.json";
+import pizzas from "../content/data/pizzas.json";
 ---
 
 <BasicLayout>
   <h1 class="text-4xl font-bold text-center">Pizza</h1>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     {
-      data.map((pizza) => (
+      pizzas.map((pizza) => (
         <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
           <h2 class="text-xl font-bold">{pizza.pizzaName}</h2>
         </div>
@@ -125,7 +125,7 @@ import { file, glob } from 'astro/loaders';
 ...
 
 const pizzas = defineCollection({
-  loader: file("src/content/data/data.json"),
+  loader: file("src/content/data/pizzas.json"),
   schema: z.object({
     id: z.number(),
     pizzaName: z.string(),
