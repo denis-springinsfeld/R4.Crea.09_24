@@ -563,6 +563,95 @@ Bienvenue sur mon _nouveau blog_ dédié à Astro ! Ici, je vais partager mon pa
 ```
 
 
+## C - Astro Advanced
+
+### C_1 Astro Data
+
+Astro Data est un moyen de charger des données externes dans vos composants Astro.
+
+**Astro Data** prend en charge les sources de données suivantes :
+
+- JSON
+- Markdown
+  ...
+
+#### \_Charger des données JSON
+
+- Créez un nouveau fichier `data.json` dans `src/dat` avec des données JSON.
+
+```json
+{
+  "title": "Astro Data",
+  "description": "Astro Data is a way to load external data into your Astro components."
+}
+```
+
+- Importez les données JSON dans votre composant Astro.
+
+```astro
+---
+import data from '../data/data.json';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{data.title}</title>
+  </head>
+  <body>
+    <Header />
+    <h1>{data.title}</h1>
+    <p>{data.description}</p>
+  </body>
+</html>
+```
+
+#### \_Charger des données JSON et les mapper
+
+- Créez un nouveau fichier `data.json` dans `src/data` avec des données JSON.
+
+```json
+[
+  {
+    "name": "HTML",
+    "level": "Advanced"
+  },
+  {
+    "name": "CSS",
+    "level": "Intermediate"
+  },
+  {
+    "name": "JavaScript",
+    "level": "Advanced"
+  }
+]
+```
+
+- Importez les données JSON dans votre composant Astro et mappez-les pour afficher les compétences.
+
+```astro
+---
+import compet from '../data/compet.json';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Compétences</title>
+  </head>
+  <body>
+    <Header />
+    <h1>Compétences</h1>
+    <ul>
+      {compet.map((item) => (
+        <li>{item.name}: {item.level}</li>
+      ))}
+    </ul>
+  </body>
+</html>
+```
 
 
 
