@@ -82,7 +82,7 @@ Modifier le fichier `.prettierrc`
 
 ## 4 - Créer un layout
 
-- Créer un fichier `BaicLayout.astro` dans le dossier `src/layouts`:
+- Créer un fichier `BasicLayout.astro` dans le dossier `src/layouts`:
 
 ## 5 - Ajouter des data
 
@@ -91,7 +91,6 @@ Modifier le fichier `.prettierrc`
 - Ajouter une page `pizza.astro` dans le dossier `src/pages`:
 
 ```astro
----
 ---
 import BasicLayout from "../layouts/BasicLayout.astro";
 import pizzas from "../content/data/pizzas.json";
